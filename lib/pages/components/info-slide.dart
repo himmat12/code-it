@@ -14,7 +14,7 @@ class _InfoSlideState extends State<InfoSlide> {
         indicatorBgPadding: 5.0,
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(seconds: 2),
-        dotPosition: DotPosition.bottomRight,
+        dotPosition: DotPosition.topRight,
         dotSize: 5.0,
         images: [
           NetworkImage('https://scontent.fktm6-1.fna.fbcdn.net/v/t1.0-9/68759629_2498352313520713_9023972171478728704_n.jpg?_nc_cat=104&_nc_eui2=AeFj41tZRP7Qle8Jn60GKUagPCsd9WRX-IdCBgZ9t4v5QBFTDywQCN5pykW8Wf_O5bnJFYmg4wHBtgPHLnCQM6fRIYpK_s6qpIRBu7YXPRMiZg&_nc_oc=AQmrO5MCpucEdv7XYpRaKpCtyCzLRLSTc1Pl_3eO-XL7hx07HldPp_Oq0ioS8R7t8as&_nc_ht=scontent.fktm6-1.fna&oh=932490d976e4343bbefd5b9eca839ae1&oe=5E0CCBAE'),

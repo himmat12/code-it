@@ -10,6 +10,9 @@ class MyApp extends StatelessWidget {
       title: 'Code IT',
       debugShowCheckedModeBanner: false,
       home: HomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange
+      ),
     );
   }
 }

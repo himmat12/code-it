@@ -11,80 +11,144 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(
-                Icons.home,
-                color: Colors.blue,
-              ),
-              title: Text('Home'),
-            )
-          ],
-        ),
-      ),
-      body: ListView(
-        physics: ScrollPhysics(parent: BouncingScrollPhysics()),
-        children: <Widget>[
-          // Slides Widgets
-          InfoSlide(),
-
-          //Popular Course List
-
-          Card(
-            elevation: 12.0,
-            child: Column(
-              children: <Widget>[
-                Material(
-                  elevation: 5.0,
-                  color: Colors.white70,
-                                  child: ListTile(
-                    leading: Icon(
-                      Icons.library_books,
-                      color: Colors.blue,
-                    ),
-                    title: Text('Popular Courses'),
+    return SafeArea(
+      child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text('CODE IT'),
+                accountEmail: Text('info@codeit.com.np'),
+                currentAccountPicture: CircleAvatar(
+                  
+                  child: Container(
+                    child: Image.network('https://codeit.com.np/wp-content/uploads/2019/05/codeIT-logo.png'),
                   ),
+                  backgroundColor: Colors.white
                 ),
-                Container(
-                  height: 200.0,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Colors.deepOrange,
+                ),
+                title: Text('Home'),
+              ),
+               ListTile(
+                leading: Icon(
+                  Icons.library_books,
+                  color: Colors.deepOrange,
+                ),
+                title: Text('Courses'),
+              ),
+               ListTile(
+                leading: Icon(
+                  Icons.notifications_active,
+                  color: Colors.deepOrange,
+                ),
+                title: Text('Notice'),
+              ),
+               ListTile(
+                leading: Icon(
+                  Icons.group,
+                  color: Colors.deepOrange,
+                ),
+                title: Text('Our Crew'),
+              ),
+              Divider(),
+               ListTile(
+                leading: Icon(
+                  Icons.info,
+                  color: Colors.green,
+                ),
+                title: Text('About us'),
+              ),
+               ListTile(
+                leading: Icon(
+                  Icons.contacts,
+                  color: Colors.green,
+                ),
+                title: Text('Contact us'),
+              ),
+              Divider(),
+               ListTile(
+                leading: Icon(
+                  Icons.share,
+                  color: Colors.blueAccent,
+                ),
+                title: Text('Facebook'),
+              ),
+              Divider(),
+               ListTile(
+                leading: Icon(
+                  Icons.brightness_2,
+                  color: Colors.black87,
+                ),
+                title: Text('Night Mode'),
+                trailing: Switch(
+                  value: false,
+                  onChanged: (bool value){
+                    value = value;
+                  },
+                ),
+              ),
+               ListTile(
+                leading: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.red,
+                ),
+                title: Text('Exit'),
+              )
+            ],
+          ),
+        ),
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              expandedHeight: 200.0,
+              floating: false,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                background: InfoSlide(),
+                title: Text('CODE IT'),
+                centerTitle: true,
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  // Slides Widgets
+
+                  //Popular Course List
+                  ListTile(
+                    title: Text(
+                      'Popular Courses',
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    subtitle: Text('Choosen by our students',style: TextStyle(),),
+                  ),
+
+                  Container(
+                    height: 180.0,
                     child: PopularCourse(),
                   ),
-                ),
-              ],
-            ),
-          ),
 
-          Card(
-            child: Column(
-              children: <Widget>[
-                Material(
-                  elevation: 5.0,
-                  color: Colors.white70,
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.alarm,
-                      color: Colors.purple,
-                    ),
+                  ListTile(
                     title: Text(
                       'Upcoming Class',
                       style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    trailing: Text('Enroll Now'),
+                    subtitle: Text('Interest student can apply it'),
                   ),
-                ),
-                Container(
-                  height: 200.0,
-                  child: ClassStartingSoon(),
-                ),
-              ],
-            ),
-          )
-        ],
+                  Container(
+                    height: 250.0,
+                    child: ClassStartingSoon(),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
