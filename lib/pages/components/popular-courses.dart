@@ -31,48 +31,63 @@ class _PopularCourseState extends State<PopularCourse> {
             itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index) {
               DocumentSnapshot pc = snapshot.data.documents[index];
-              return  Card(
-                  child: Container(
-                    width: 180.0,
-                    height: 160.0,
-                    child: InkWell(
-                      onTap: () {
-                        var course = pc['title'].toString();
-                        switch (course) {
-                          case "JAVA":
-                            _launchURL('https://codeit.com.np/java/');
-                            //Open Java Link
-                            break;
-                          case "PHP":
-                            //Open Flutter Link
-                            _launchURL('https://codeit.com.np/php-training/');
-                            break;
-                        }
-                      },
-                      child: Wrap(
-                        alignment: WrapAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            width: 180.0,
-                            height: 100.0,
-                            child: Image.network(
-                              pc['image'],
-                              fit: BoxFit.cover,
-                            ),
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                child: Container(
+                  width: 180.0,
+                  height: 160.0,
+                  child: InkWell(
+                    onTap: () {
+                      var course = pc['title'].toString();
+                      switch (course) {
+                        case "Dot Net":
+                          _launchURL('https://codeit.com.np/asp-net/');
+                          break;
+                        case "JAVA":
+                          _launchURL('https://codeit.com.np/java/');
+                          //Open Java Link
+                          break;
+                        case "PHP":
+                          //Open PHP Link
+                          _launchURL('https://codeit.com.np/php-training/');
+                          break;
+                        case "Angular JS":
+                          _launchURL(
+                              'https://codeit.com.np/mean-stack-course/');
+                          break;
+                        case "Node JS":
+                          _launchURL(
+                              'https://codeit.com.np/mean-stack-course/');
+                          break;
+                        case "Web Designing":
+                          _launchURL('https://codeit.com.np/web-designing/');
+                      }
+                    },
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 180.0,
+                          height: 100.0,
+                          child: Image.network(
+                            pc['image'],
+                            fit: BoxFit.cover,
                           ),
-                          ListTile(
-                            dense: true,
-                            title: Text(pc['title'],style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.w500),),
-                            subtitle: Text(pc['subtitle']),
-                          )
-                        ],
-                      ),
+                        ),
+                        ListTile(
+                          dense: true,
+                          title: Text(
+                            pc['title'],
+                            style: TextStyle(
+                                fontSize: 16.0, fontWeight: FontWeight.w500),
+                          ),
+                          subtitle: Text(pc['subtitle']),
+                        )
+                      ],
                     ),
                   ),
-              
-                );
-          
-              
+                ),
+              );
             },
           );
         }

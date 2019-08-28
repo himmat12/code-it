@@ -1,7 +1,9 @@
 import 'package:code_it/pages/class-starting-soon.dart';
 import 'package:code_it/pages/components/info-slide.dart';
 import 'package:code_it/pages/components/popular-courses.dart';
+import 'package:code_it/pages/recent-events.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,10 +11,47 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  launchFacebookPage() async {
+    const url = "https://facebook.com/codeit.np";   
+    if (await canLaunch(url)) {
+       await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }   
+}
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: BottomAppBar(
+         color: Colors.deepPurpleAccent,
+          child: Row(
+            
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.home,color: Colors.white,),
+                onPressed: (){},
+                tooltip: 'Home',
+              ),
+              IconButton(
+                icon: Icon(Icons.event_available),
+                onPressed: (){},
+                tooltip: 'Upcoming Events',
+              ),
+              IconButton(
+                icon: Icon(Icons.library_books),
+                onPressed: (){},
+                tooltip: 'Courses',
+              ),
+              IconButton(
+                icon: Icon(Icons.map),
+                onPressed: (){},
+                tooltip: 'Map',
+              )
+            ],
+          ),
+        ),
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
@@ -72,8 +111,11 @@ class _HomePageState extends State<HomePage> {
               ),
               Divider(),
                ListTile(
+                 onTap: (){
+                   launchFacebookPage();
+                 },
                 leading: Icon(
-                  Icons.share,
+                  Icons.thumb_up,
                   color: Colors.blueAccent,
                 ),
                 title: Text('Facebook'),
@@ -81,7 +123,7 @@ class _HomePageState extends State<HomePage> {
               Divider(),
                ListTile(
                 leading: Icon(
-                  Icons.brightness_2,
+                  Icons.brightness_4,
                   color: Colors.black87,
                 ),
                 title: Text('Night Mode'),
@@ -103,16 +145,21 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: CustomScrollView(
+          physics: BouncingScrollPhysics(),
           slivers: <Widget>[
             SliverAppBar(
+              backgroundColor: Color(0xff6200ee),
+              title: Text('CODE IT'),
+              centerTitle: false,
               expandedHeight: 200.0,
               floating: false,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 background: InfoSlide(),
-                title: Text('CODE IT'),
                 centerTitle: true,
+                
               ),
+            
             ),
             SliverList(
               delegate: SliverChildListDelegate(
@@ -144,6 +191,20 @@ class _HomePageState extends State<HomePage> {
                     height: 250.0,
                     child: ClassStartingSoon(),
                   ),
+
+                  //Recent Events
+                  ListTile(
+                    title: Text(
+                      'Recent Events',
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    subtitle: Text('By Code IT',style: TextStyle(),),
+                  ),
+
+                  Container(
+                    height: 360.0,
+                    child: RecentEvents(),
+                  )
                 ],
               ),
             )
