@@ -3,6 +3,7 @@ package io.flutter.plugins;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugins.firebase.cloudfirestore.CloudFirestorePlugin;
 import io.flutter.plugins.firebase.core.FirebaseCorePlugin;
+import com.flutter_webview_plugin.FlutterWebviewPlugin;
 import io.flutter.plugins.share.SharePlugin;
 import io.flutter.plugins.urllauncher.UrlLauncherPlugin;
 import np.com.sarbagyastha.youtubeplayer.YoutubePlayerPlugin;
@@ -17,6 +18,7 @@ public final class GeneratedPluginRegistrant {
     }
     CloudFirestorePlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.cloudfirestore.CloudFirestorePlugin"));
     FirebaseCorePlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.core.FirebaseCorePlugin"));
+    FlutterWebviewPlugin.registerWith(registry.registrarFor("com.flutter_webview_plugin.FlutterWebviewPlugin"));
     SharePlugin.registerWith(registry.registrarFor("io.flutter.plugins.share.SharePlugin"));
     UrlLauncherPlugin.registerWith(registry.registrarFor("io.flutter.plugins.urllauncher.UrlLauncherPlugin"));
     YoutubePlayerPlugin.registerWith(registry.registrarFor("np.com.sarbagyastha.youtubeplayer.YoutubePlayerPlugin"));

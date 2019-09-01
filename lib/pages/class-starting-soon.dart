@@ -31,7 +31,7 @@ class _ClassStartingSoonState extends State<ClassStartingSoon> {
             itemBuilder: (context, index) {
               DocumentSnapshot css = snapshot.data.documents[index];
               return Card(
-                elevation: 3.0,
+                // elevation: 3.0,
                 clipBehavior: Clip.antiAlias,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
